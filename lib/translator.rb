@@ -26,27 +26,16 @@ def get_japanese_emoticon(file_path,w_emoticon)
   end
   japanese_emoticon
  end
- 
- def get_english_meaning(yaml_file, emoticon)
-  what_we_working_with = load_library("./lib/emoticons.yml")
-  translation = "Sorry, that emoticon was not found"
-  what_we_working_with.each_pair do |mood, mood_hash|
-    if mood_hash[:japanese] == emoticon
-      then translation = mood
-  end
-end
-translation
-end
 
-#def get_english_meaning(file_path,j_emoticon)
-  #emoticons_file = load_library(file_path)
-  #english_name = "Sorry, that emoticon was not found"
-  #emoticons_file.each do |emotion,lang|
-    #lang.each do |inner_key,emoticon|
-    #if emoticon == j_emoticon
-      #then english_name = emotion
-    # end
-    #end
-  #end
-  #english_name
-#end
+def get_english_meaning(file_path,j_emoticon)
+  emoticons_file = load_library(file_path)
+  english_name = "Sorry, that emoticon was not found"
+  emoticons_file.each do |emotion,lang|
+    lang.each do |inner_key,emoticon|
+    if emoticon == j_emoticon
+      then english_name = emotion
+    end
+    end
+  end
+  english_name
+end
